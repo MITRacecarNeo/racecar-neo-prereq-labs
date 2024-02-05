@@ -64,9 +64,9 @@ def start():
     global angle_offset
 
     speed = 0.0 # The initial speed is at 1.0
-    angle = 0.0 # The initial turning angle away from the center is at 0.0
+    angle = 0.0 # The initial turning angle is 0.0
     speed_offset = 0.5 # The initial speed offset is 0.5
-    angle_offset = 1.0 # The inital angle offset is 1.0
+    angle_offset = 0.5 # The inital angle offset is 0.5
 
     # This tells the car to begin at a standstill
     rc.drive.stop()
@@ -84,22 +84,22 @@ def update():
     # right trigger is pressed, the RACECAR moves forward at the designated speed.
     # when the left trigger is pressed, the RACECAR moves backward at the designated speed.
     if rc.controller.get_trigger(rc.controller.Trigger._____) > _____:
-      speed = _____
+        speed = _____
     elif rc.controller.get_trigger(rc.controller.Trigger._____) > _____:
-      speed = _____
+        speed = _____
     else:
-      speed = 0
+        speed = 0
       
     # TODO Part 2: Modify the following conditional statement such that when the
     # value of the left joystick's x-axis is greater than 0, the RACECAR's wheels turn right.
     # When the value of the left joystick's x-axis is less than 0, the RACECAR's wheels turn left.
     (x, y) = rc.controller.get_joystick(rc.controller.Joystick._____)
     if x > 0.5:
-      angle = _____
+        angle = _____
     elif x < 0.5:
-      angle = -_____
+        angle = -_____
     else:
-      speed = 0
+        angle = 0
 
     # TODO Part 3: Write a conditional statement such that when the
     # "A" button is pressed, increase the speed of the RACECAR. When the "B" button is pressed,
