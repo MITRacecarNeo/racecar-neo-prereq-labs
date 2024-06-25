@@ -21,7 +21,7 @@ rules:
 should be in the center of the walls.
 - The RACECAR may have different states depending on if it sees only a right wall, only a 
 left wall, or both walls.
-- Both speed and angle parameters are variable and recalcualted every frame. The speed and angle
+- Both speed and angle parameters are variable and recalculated every frame. The speed and angle
 values are sent once at the end of the update() function.
 
 Note: This file consists of bare-bones skeleton code, which is the bare minimum to run a 
@@ -59,19 +59,21 @@ rc = racecar_core.create_racecar()
 
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
-    pass # Remove 'pass' and write your source code for the start() function here
+    pass  # Remove 'pass' and write your source code for the start() function here
+
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
 # is pressed  
 def update():
-    pass # Remove 'pass' and write your source code for the update() function here
+    pass  # Remove 'pass' and write your source code for the update() function here
+
 
 # [FUNCTION] update_slow() is similar to update() but is called once per second by
 # default. It is especially useful for printing debug messages, since printing a 
 # message every frame in update is computationally expensive and creates clutter
 def update_slow():
-    pass # Remove 'pass and write your source code for the update_slow() function here
+    pass  # Remove 'pass and write your source code for the update_slow() function here
 
 
 ########################################################################################

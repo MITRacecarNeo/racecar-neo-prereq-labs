@@ -47,6 +47,7 @@ rc = racecar_core.create_racecar()
 # Each entry is a list containing (time remaining, speed, angle)
 queue = []
 
+
 ########################################################################################
 # Functions
 ########################################################################################
@@ -69,6 +70,7 @@ def start():
         "   X button = drive through obstacle: \"Hallway\"\n"
         "   Y button = drive through obstacle: \"Maze\"\n"
     )
+
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
@@ -107,7 +109,8 @@ def update():
     # Send speed and angle commands to the RACECAR
     rc.drive.set_speed_angle(speed, angle)
 
-# [FUNCTION] When the function is called, clear the queue, then place instructions 
+
+# [FUNCTION] When the function is called, clear the queue, then place instructions
 # inside of the queue that cause the RACECAR to drive in the zigzag
 def drive_zigzag():
     global queue
@@ -123,19 +126,19 @@ def drive_zigzag():
     # for the RACECAR to drive in the "Zigzag" obstacle course
     # [Hint] queue.append([time, speed, angle])
 
-# [FUNCTION] When the function is called, clear the queue, then place instructions 
+
+# [FUNCTION] When the function is called, clear the queue, then place instructions
 # inside of the queue that cause the RACECAR to drive in the spiral
 def drive_spiral():
     global queue
 
     # Use this section to define and tune static variables
-    
 
     queue.clear()
 
     # TODO Part 3: Append the instructions into the queue that represent the RACECAR
     # driving in the "Spiral" obstacle course
-    
+
 
 # [FUNCTION] When the function is called, clear the queue, then place instructions 
 # inside of the queue that cause the RACECAR to drive through the hallway
