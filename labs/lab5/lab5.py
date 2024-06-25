@@ -50,13 +50,14 @@ rc = racecar_core.create_racecar()
 MIN_CONTOUR_AREA = 30
 
 # TODO Part 1: Determine the HSV color threshold pairs for ORANGE
-ORANGE = _____ # The HSV range for the color ORANGE
+ORANGE = _____  # The HSV range for the color ORANGE
 
 # >> Variables
 speed = 0.0  # The current speed of the car
 angle = 0.0  # The current angle of the car's wheels
 contour_center = None  # The (pixel row, pixel column) of contour
 contour_area = 0  # The area of contour
+
 
 ########################################################################################
 # Functions
@@ -73,6 +74,7 @@ def update_contour():
     # TODO Part 2: Complete this function by cropping the image to the bottom of the screen,
     # analyzing for contours of interest, and returning the center of the contour and the
     # area of the contour for the color of line we should follow (Hint: Lab 3)
+
 
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
@@ -97,6 +99,7 @@ def start():
         "   A button = print current speed and angle\n"
         "   B button = print contour center and area"
     )
+
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
@@ -127,6 +130,7 @@ def update():
         else:
             print("Center:", contour_center, "Area:", contour_area)
 
+
 # [FUNCTION] update_slow() is similar to update() but is called once per second by
 # default. It is especially useful for printing debug messages, since printing a 
 # message every frame in update is computationally expensive and creates clutter
@@ -149,6 +153,7 @@ def update_slow():
             s = ["-"] * 32
             s[int(contour_center[1] / 20)] = "|"
             print("".join(s) + " : area = " + str(contour_area))
+
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution

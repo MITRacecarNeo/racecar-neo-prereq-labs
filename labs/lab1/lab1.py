@@ -52,6 +52,7 @@ global angle
 global speed_offset
 global angle_offset
 
+
 ########################################################################################
 # Functions
 ########################################################################################
@@ -63,13 +64,14 @@ def start():
     global speed_offset
     global angle_offset
 
-    speed = 0.0 # The initial speed is at 1.0
-    angle = 0.0 # The initial turning angle is 0.0
-    speed_offset = 0.5 # The initial speed offset is 0.5
-    angle_offset = 0.5 # The inital angle offset is 0.5
+    speed = 0.0  # The initial speed is at 1.0
+    angle = 0.0  # The initial turning angle is 0.0
+    speed_offset = 0.5  # The initial speed offset is 0.5
+    angle_offset = 0.5  # The inital angle offset is 0.5
 
     # This tells the car to begin at a standstill
     rc.drive.stop()
+
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
@@ -79,7 +81,7 @@ def update():
     global angle
     global speed_offset
     global angle_offset
-    
+
     # TODO Part 1: Modify the following conditional statement such that when the
     # right trigger is pressed, the RACECAR moves forward at the designated speed.
     # when the left trigger is pressed, the RACECAR moves backward at the designated speed.
@@ -89,7 +91,7 @@ def update():
         speed = _____
     else:
         speed = 0
-      
+
     # TODO Part 2: Modify the following conditional statement such that when the
     # value of the left joystick's x-axis is greater than 0, the RACECAR's wheels turn right.
     # When the value of the left joystick's x-axis is less than 0, the RACECAR's wheels turn left.
@@ -113,6 +115,7 @@ def update():
 
     # Send the speed and angle values to the RACECAR
     rc.drive.set_speed_angle(speed, angle)
+
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution

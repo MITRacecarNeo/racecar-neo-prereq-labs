@@ -57,7 +57,7 @@ MIN_CONTOUR_AREA = 30
 CROP_FLOOR = ((360, 0), (rc.camera.get_height(), rc.camera.get_width()))
 
 # TODO Part 1: Determine the HSV color threshold pairs for BLUE, GREEN, and RED
-BLUE = _____ # The HSV range for the color blue
+BLUE = _____  # The HSV range for the color blue
 GREEN = _____  # The HSV range for the color green
 RED = _____  # The HSV range for the color red
 
@@ -69,6 +69,7 @@ speed = 0.0  # The current speed of the car
 angle = 0.0  # The current angle of the car's wheels
 contour_center = None  # The (pixel row, pixel column) of contour
 contour_area = 0  # The area of contour
+
 
 ########################################################################################
 # Functions
@@ -85,6 +86,7 @@ def update_contour():
     # TODO Part 2: Complete this function by cropping the image to the bottom of the screen,
     # analyzing for contours of interest, and returning the center of the contour and the
     # area of the contour for the color of line we should follow (Hint: Lab 3)
+
 
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
@@ -109,6 +111,7 @@ def start():
         "   A button = print current speed and angle\n"
         "   B button = print contour center and area"
     )
+
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
@@ -136,7 +139,7 @@ def update():
     # TODO Part 4: Determine the speed that the RACECAR should drive at. This may be static or
     # variable depending on the programmer's intent.
     speed = _____
-        
+
     # Set the speed and angle of the RACECAR after calculations have been complete
     rc.drive.set_speed_angle(speed, angle)
 
@@ -150,6 +153,7 @@ def update():
             print("No contour found")
         else:
             print("Center:", contour_center, "Area:", contour_area)
+
 
 # [FUNCTION] update_slow() is similar to update() but is called once per second by
 # default. It is especially useful for printing debug messages, since printing a 
@@ -173,6 +177,7 @@ def update_slow():
             s = ["-"] * 32
             s[int(contour_center[1] / 20)] = "|"
             print("".join(s) + " : area = " + str(contour_area))
+
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution
