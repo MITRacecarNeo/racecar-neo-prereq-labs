@@ -5,7 +5,7 @@ racecar-neo-prereq-labs
 
 File Name: lab_d.py
 
-Title: Lab D - Driving in Shapes
+Title: Lab D - Driving in Mazes
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
