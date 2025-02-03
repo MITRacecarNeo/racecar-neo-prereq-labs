@@ -3,26 +3,24 @@ MIT BWSI Autonomous RACECAR
 MIT License
 racecar-neo-prereq-labs
 
-File Name: lab5.py
+File Name: lab_f.py
 
-Title: Lab 5 - Cone Parking
+Title: Lab F - Line Follower
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
-Purpose: This script provides the RACECAR with the ability to autonomously detect an orange
-cone and then drive and park 30cm away from the cone. Complete the lines of code under the 
-#TODO indicators to complete the lab.
+Purpose: Write a script to enable fully autonomous behavior from the RACECAR. The
+RACECAR should automatically identify the color of a line it sees, then drive on the
+center of the line throughout the obstacle course. The RACECAR should also identify
+color changes, following colors with higher priority than others. Complete the lines 
+of code under the #TODO indicators to complete the lab.
 
-Expected Outcome: When the user runs the script, the RACECAR should be fully autonomous
-and drive without the assistance of the user. The RACECAR drives according to the following
-rules:
-- The RACECAR detects the orange cone using its color camera, and can navigate to the cone
-and park using its color camera and LIDAR sensors.
-- The RACECAR should operate on a state machine with multiple states. There should not be
-a terminal state. If there is no cone in the environment, the program should not crash.
-
-Environment: Test your code using the level "Neo Labs > Lab 5: Cone Parking".
-Click on the screen to move the orange cone around the screen.
+Expected Outcome: When the user runs the script, they are able to control the RACECAR
+using the following keys:
+- When the right trigger is pressed, the RACECAR moves forward at full speed
+- When the left trigger is pressed, the RACECAR, moves backwards at full speed
+- The angle of the RACECAR should only be controlled by the center of the line contour
+- The RACECAR sees the color RED as the highest priority, then GREEN, then BLUE
 """
 
 ########################################################################################
@@ -49,8 +47,17 @@ rc = racecar_core.create_racecar()
 # The smallest contour we will recognize as a valid contour
 MIN_CONTOUR_AREA = 30
 
-# TODO Part 1: Determine the HSV color threshold pairs for ORANGE
-ORANGE = _____  # The HSV range for the color ORANGE
+# A crop window for the floor directly in front of the car
+CROP_FLOOR = ((360, 0), (rc.camera.get_height(), rc.camera.get_width()))
+
+# TODO Part 1: Determine the HSV color threshold pairs for GREEN and RED
+# Colors, stored as a pair (hsv_min, hsv_max) Hint: Lab E!
+BLUE = ((90, 50, 50), (120, 255, 255))  # The HSV range for the color blue
+GREEN = _____  # The HSV range for the color green
+RED = _____  # The HSV range for the color red
+
+# Color priority: Red >> Green >> Blue
+COLOR_PRIORITY = (RED, GREEN, BLUE)
 
 # >> Variables
 speed = 0.0  # The current speed of the car
@@ -71,10 +78,18 @@ def update_contour():
 
     image = rc.camera.get_color_image()
 
-    # TODO Part 2: Complete this function by cropping the image to the bottom of the screen,
-    # analyzing for contours of interest, and returning the center of the contour and the
-    # area of the contour for the color of line we should follow (Hint: Lab 3)
+    if image is None:
+        contour_center = None
+        contour_area = 0
+    else:
+        # Crop the image to the floor directly in front of the car
+        image = rc_utils.crop(image, _____, _____)
 
+        # TODO Part 2: Search for line colors, and update the global variables
+        # contour_center and contour_area with the largest contour found
+
+        # Display the image to the screen
+        rc.display.show_color_image(image)
 
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
@@ -93,30 +108,43 @@ def start():
 
     # Print start message
     print(
-        ">> Lab 4 - Line Follower\n"
+        ">> Lab 2A - Color Image Line Following\n"
         "\n"
         "Controls:\n"
+        "   Right trigger = accelerate forward\n"
+        "   Left trigger = accelerate backward\n"
         "   A button = print current speed and angle\n"
         "   B button = print contour center and area"
     )
-
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
 # is pressed  
 def update():
+    """
+    After start() is run, this function is run every frame until the back button
+    is pressed
+    """
     global speed
     global angle
 
     # Search for contours in the current color image
     update_contour()
 
-    # TODO Part 3: Park the car 30cm away from the closest orange cone.
-    # You may use a state machine and a combination of sensors (color camera,
-    # or LIDAR to do so). Depth camera is not allowed at this time to match the
-    # physical RACECAR Neo.
+    # TODO Part 3: Determine the angle that the RACECAR should receive based on the current 
+    # position of the center of line contour on the screen. Hint: The RACECAR should drive in
+    # a direction that moves the line back to the center of the screen.
 
-    # Set the speed and angle of the RACECAR after calculations have been complete
+    # Choose an angle based on contour_center
+    # If we could not find a contour, keep the previous angle
+    if contour_center is not None:
+        angle = _____
+
+    # Use the triggers to control the car's speed
+    rt = rc.controller.get_trigger(rc.controller.Trigger.RIGHT)
+    lt = rc.controller.get_trigger(rc.controller.Trigger.LEFT)
+    speed = rt - lt
+
     rc.drive.set_speed_angle(speed, angle)
 
     # Print the current speed and angle when the A button is held down
@@ -129,7 +157,6 @@ def update():
             print("No contour found")
         else:
             print("Center:", contour_center, "Area:", contour_area)
-
 
 # [FUNCTION] update_slow() is similar to update() but is called once per second by
 # default. It is especially useful for printing debug messages, since printing a 

@@ -3,30 +3,26 @@ MIT BWSI Autonomous RACECAR
 MIT License
 racecar-neo-prereq-labs
 
-File Name: lab4.py
+File Name: lab_g.py
 
-Title: Lab 4 - Line Follower
+Title: Lab G - Autonomous Parking
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
-Purpose: Write a script to enable fully autonomous behavior from the RACECAR. The
-RACECAR should automatically identify the color of a line it sees, then drive on the
-center of the line throughout the obstacle course. The RACECAR should also identify
-color changes, following colors with higher priority than others. Complete the lines 
-of code under the #TODO indicators to complete the lab.
+Purpose: This script provides the RACECAR with the ability to autonomously detect an orange
+cone and then drive and park 30cm away from the cone. Complete the lines of code under the 
+#TODO indicators to complete the lab.
 
 Expected Outcome: When the user runs the script, the RACECAR should be fully autonomous
 and drive without the assistance of the user. The RACECAR drives according to the following
 rules:
-- The RACECAR maintains a following behavior by keeping the line in the center of the screen
-- The RACECAR's color priority is RED > GREEN > BLUE.
-- The angle of the RACECAR is variable, and is calculated after every frame
-- The speed of the RACECAR may be static or variable, depending on the programmer's intents
-- The RACECAR must adjust to challenges such as ramps, sharp turns, and dead ends
+- The RACECAR detects the orange cone using its color camera, and can navigate to the cone
+and park using its color camera and LIDAR sensors.
+- The RACECAR should operate on a state machine with multiple states. There should not be
+a terminal state. If there is no cone in the environment, the program should not crash.
 
-Environment: Test your code using the level "Neo Labs > Lab 4: Line Follower".
-Use the "TAB" key to advance from checkpoint to checkpoint to practice each section before
-running through the race in "race mode" to do the full course. Lowest time wins!
+Environment: Test your code using the level "Neo Labs > Lab G: Cone Parking".
+Click on the screen to move the orange cone around the screen.
 """
 
 ########################################################################################
@@ -53,16 +49,8 @@ rc = racecar_core.create_racecar()
 # The smallest contour we will recognize as a valid contour
 MIN_CONTOUR_AREA = 30
 
-# A crop window for the floor directly in front of the car
-CROP_FLOOR = ((360, 0), (rc.camera.get_height(), rc.camera.get_width()))
-
-# TODO Part 1: Determine the HSV color threshold pairs for BLUE, GREEN, and RED
-BLUE = _____  # The HSV range for the color blue
-GREEN = _____  # The HSV range for the color green
-RED = _____  # The HSV range for the color red
-
-# Color priority: Red >> Green >> Blue
-COLOR_PRIORITY = (RED, GREEN, BLUE)
+# TODO Part 1: Determine the HSV color threshold pairs for ORANGE
+ORANGE = _____  # The HSV range for the color ORANGE
 
 # >> Variables
 speed = 0.0  # The current speed of the car
@@ -105,7 +93,7 @@ def start():
 
     # Print start message
     print(
-        ">> Lab 4 - Line Follower\n"
+        ">> Lab G - Autonomous Parking\n"
         "\n"
         "Controls:\n"
         "   A button = print current speed and angle\n"
@@ -117,28 +105,16 @@ def start():
 # 60 frames per second or slower depending on processing speed) until the back button
 # is pressed  
 def update():
-    """
-    After start() is run, this function is run every frame until the back button
-    is pressed
-    """
     global speed
     global angle
 
     # Search for contours in the current color image
     update_contour()
 
-    # TODO Part 3: Determine the angle that the RACECAR should receive based on the current 
-    # position of the center of line contour on the screen. Hint: The RACECAR should drive in
-    # a direction that moves the line back to the center of the screen.
-
-    # Choose an angle based on contour_center
-    # If we could not find a contour, keep the previous angle
-    if contour_center is not None:
-        angle = _____
-
-    # TODO Part 4: Determine the speed that the RACECAR should drive at. This may be static or
-    # variable depending on the programmer's intent.
-    speed = _____
+    # TODO Part 3: Park the car 30cm away from the closest orange cone.
+    # You may use a state machine and a combination of sensors (color camera,
+    # or LIDAR to do so). Depth camera is not allowed at this time to match the
+    # physical RACECAR Neo.
 
     # Set the speed and angle of the RACECAR after calculations have been complete
     rc.drive.set_speed_angle(speed, angle)

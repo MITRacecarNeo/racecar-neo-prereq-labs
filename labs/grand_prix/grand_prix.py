@@ -3,34 +3,24 @@ MIT BWSI Autonomous RACECAR
 MIT License
 racecar-neo-prereq-labs
 
-File Name: lab6.py
+File Name: grand_prix.py
 
-Title: Lab 6 - Wall Follower
+Title: Grand Prix Day!
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
-Purpose: This script provides the RACECAR with the ability to autonomously follow a wall.
-The script should handle wall following for the right wall, the left wall, both walls, and
-be flexible enough to handle very narrow and very wide walls as well.
+Purpose: Write a script to enable fully autonomous behavior from the RACECAR. The
+RACECAR will traverse the obstacle course autonomously without human intervention.
+Once the start button is pressed, the RACECAR must drive through the course until it
+reaches finish line.
 
-Expected Outcome: When the user runs the script, the RACECAR should be fully autonomous
-and drive without the assistance of the user. The RACECAR drives according to the following
-rules:
-- The RACECAR detects a wall using the LIDAR sensor a certain distance and angle away.
-- Ideally, the RACECAR should be a set distance away from a wall, or if two walls are detected,
-should be in the center of the walls.
-- The RACECAR may have different states depending on if it sees only a right wall, only a 
-left wall, or both walls.
-- Both speed and angle parameters are variable and recalculated every frame. The speed and angle
-values are sent once at the end of the update() function.
+Note: There is no template code in this document to follow except for the RACECAR script 
+structure found in template.py. You are expected to use code written from previous labs
+to complete this challenge. Good luck!
 
-Note: This file consists of bare-bones skeleton code, which is the bare minimum to run a 
-Python file in the RACECAR sim. Less help will be provided from here on out, since you've made
-it this far. Good luck, and remember to contact an instructor if you have any questions!
-
-Environment: Test your code using the level "Neo Labs > Lab 6: Wall Follower".
-Use the "TAB" key to advance from checkpoint to checkpoint to practice each section before
-running through the race in "race mode" to do the full course. Lowest time wins!
+Expected Outcome: When the user runs the script, they must not be able to manually control
+the RACECAR. The RACECAR must move forward on its own, traverse through the course, and then
+stop on its own.
 """
 
 ########################################################################################
@@ -41,7 +31,7 @@ import sys
 
 # If this file is nested inside a folder in the labs folder, the relative path should
 # be [1, ../../library] instead.
-sys.path.insert(0, '../library')
+sys.path.insert(1, '../../library')
 import racecar_core
 
 ########################################################################################
@@ -59,22 +49,19 @@ rc = racecar_core.create_racecar()
 
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
-    pass  # Remove 'pass' and write your source code for the start() function here
-
+    pass # Remove 'pass' and write your source code for the start() function here
 
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
 # is pressed  
 def update():
-    pass  # Remove 'pass' and write your source code for the update() function here
-
+    pass # Remove 'pass' and write your source code for the update() function here
 
 # [FUNCTION] update_slow() is similar to update() but is called once per second by
 # default. It is especially useful for printing debug messages, since printing a 
 # message every frame in update is computationally expensive and creates clutter
 def update_slow():
-    pass  # Remove 'pass and write your source code for the update_slow() function here
-
+    pass # Remove 'pass and write your source code for the update_slow() function here
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution

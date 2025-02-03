@@ -3,9 +3,9 @@ MIT BWSI Autonomous RACECAR
 MIT License
 racecar-neo-prereq-labs
 
-File Name: lab_3.py
+File Name: lab_e.py
 
-Title: Lab 3 - Stoplight Challenge
+Title: Lab E - Stoplight Challenge
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
@@ -77,7 +77,6 @@ contour_area = 0  # The area of contour
 queue = [] # The queue of instructions
 stoplight_color = "" # The current color of the stoplight
 
-
 ########################################################################################
 # Functions
 ########################################################################################
@@ -103,7 +102,6 @@ def update_contour():
         # Display the image to the screen
         rc.display.show_color_image(image)
 
-
 # [FUNCTION] The start function is run once every time the start button is pressed
 def start():
 
@@ -122,7 +120,6 @@ def start():
         "   B button = print contour center and area"
     )
 
-
 # [FUNCTION] After start() is run, this function is run once every frame (ideally at
 # 60 frames per second or slower depending on processing speed) until the back button
 # is pressed  
@@ -134,9 +131,9 @@ def update():
     # TODO Part 2: Complete the conditional tree with the given constraints.
     if stoplight_color == "_____":
         # Call the correct function to append the instructions to the list
-    elif stoplight_color = "_____":
+    elif stoplight_color == "_____":
         # Call the correct function to append the instructions to the list
-
+    
     # ... You may need more elif/else statements
 
     # TODO Part 3: Implement a way to execute instructions from the queue once they have been placed
@@ -156,13 +153,11 @@ def update():
         else:
             print("Center:", contour_center, "Area:", contour_area)
 
-
 # [FUNCTION] Appends the correct instructions to make a 90 degree right turn to the queue
 def turnRight():
     global queue
 
     # TODO Part 4: Complete the rest of this function with the instructions to make a right turn
-
 
 # [FUNCTION] Appends the correct instructions to make a 90 degree left turn to the queue
 def turnLeft():
@@ -170,19 +165,16 @@ def turnLeft():
 
     # TODO Part 5: Complete the rest of this function with the instructions to make a left turn
 
-
 # [FUNCTION] Appends the correct instructions to go straight through the intersectionto the queue
 def goStraight():
     global queue
 
     # TODO Part 6: Complete the rest of this function with the instructions to make a left turn
 
-
 # [FUNCTION] Clears the queue to stop all actions
 def stopNow():
     global queue
     queue.clear()
-
 
 ########################################################################################
 # DO NOT MODIFY: Register start and update and begin execution

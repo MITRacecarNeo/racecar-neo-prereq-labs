@@ -3,27 +3,22 @@ MIT BWSI Autonomous RACECAR
 MIT License
 racecar-neo-prereq-labs
 
-File Name: lab2.py
+File Name: lab_d.py
 
-Title: Lab 2 - Driving in Mazes
+Title: Lab D - Driving in Shapes
 
 Author: [PLACEHOLDER] << [Write your name or team name here]
 
 Purpose: Create a script to enable semi-autonomous driving for the RACECAR. Button presses
-enable a series of instructions sent to the RACECAR, which enable it to drive in various mazes.
+enable a series of instructions sent to the RACECAR, which enable it to drive in various shapes.
 Complete the lines of code under the #TODO indicators to complete the lab.
 
 Expected Outcome: When the user runs the script, they are able to control the RACECAR
 using the following keys:
-- When the "A" button is pressed, drive through the first obstacle titled "Zigzag".
-- When the "B" button is pressed, drive through the second obstacle titled "Spiral".
-- When the "X" button is pressed, drive through the third obstacle titled "Hallway".
-- When the "Y" button is pressed, drive through the fourth obstacle titled "Maze". [BONUS!]
-
-Environment: Test your code using the level "Neo Labs > Lab 2: Driving in Mazes".
-Use the "TAB" key to switch between each maze. The RACECAR starts at the white line (checkpoint)
-and ends at the green pad at the end of the race. Please note if the RACECAR collides with a wall,
-it will be reset back to the nearest checkpoint.
+- When the "A" button is pressed, drive in a circle
+- When the "B" button is pressed, drive in a square
+- When the "X" button is pressed, drive in a figure eight
+- When the "Y" button is pressed, drive in any shape of your choice
 """
 
 ########################################################################################
@@ -62,7 +57,7 @@ def start():
 
     # Print start message
     print(
-        ">> Lab 2 - Driving in Mazes\n"
+        ">> Lab D - Driving in Mazes\n"
         "\n"
         "Controls:\n"
         "   A button = drive through obstacle: \"Zigzag\"\n"
@@ -116,9 +111,6 @@ def drive_zigzag():
     global queue
 
     # Use this section to define and tune static variables
-    STRAIGHT_TIME = ___
-    TURN_TIME = ___
-    BRAKE_TIME = ___
 
     queue.clear()
 
